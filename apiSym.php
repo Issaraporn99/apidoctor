@@ -12,8 +12,12 @@ if (isset($_GET)) {
 		$group_id = $_GET['group_id'];
 
 
-		$result = mysqli_query($link, "SELECT * FROM `symptom`LEFT JOIN disease_symptoms USING ( `symptom_id` )
-									   WHERE group_id =$group_id LIMIT 0 , 1");
+		$result = mysqli_query($link, "SELECT symptom_name,symptom_id,disease_id,status,yn,count(*)
+FROM symptom 
+LEFT JOIN get_dissym using(`symptom_id`)
+WHERE group_id=$group_id
+group by symptom_name,symptom_id
+order by count(*) desc,`symptom_id` LIMIT 0 , 1");
 
 		if ($result) {
 

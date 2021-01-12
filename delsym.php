@@ -1,3 +1,5 @@
+
+
 <?php
 header("content-type:text/javascript;charset=utf-8");
 error_reporting(0);
@@ -9,11 +11,9 @@ $link = mysqli_connect('student.crru.ac.th','601463046','issaraporn@5075','60146
 if (isset($_GET)) {
 	if ($_GET['isAdd'] == 'true') {
 
-		$symptom_id = $_GET['symptom_id'];
+		$del = $_GET['del'];
 
-
-		$result = mysqli_query($link, "SELECT * FROM get_dissym
-										JOIN `symptom`USING ( `symptom_id` ) WHERE `symptom_id` =$symptom_id");
+		$result = mysqli_query($link, "DELETE FROM `get_dissym` WHERE `disease_id` not in ($del)");
 
 		if ($result) {
 
@@ -28,7 +28,7 @@ if (isset($_GET)) {
 
 	} else echo "Welcome Master UNG";	// if2
    
-}	// if1
+}
 
 
 	mysqli_close($link);
