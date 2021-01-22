@@ -13,13 +13,14 @@ if (isset($_GET)) {
 		$text = $_GET['text'];
 
 
-		$result = mysqli_query($link, "SELECT `symptom_id` , `symptom_name` , `disease_id` , COUNT( `symptom_id` ),`yn`
+		$result = mysqli_query($link, "SELECT `symptom_id` , `symptom_name` , `disease_id` , COUNT( `symptom_id` ) , `yn`
 										FROM get_dissym
-										JOIN `symptom` USING ( `symptom_id` )
-										WHERE `disease_id` IN ( $text ) AND NOT (`yn` IN ( 'y' ))
+										JOIN `symptom`
+										USING ( `symptom_id` )
+										WHERE (`yn` IN ( 'a' ))
 										GROUP BY `symptom_id` , `symptom_name`
 										ORDER BY COUNT( * ) DESC , `symptom_id`
-										LIMIT 0 , 1");
+										LIMIT $text , 1");
 
 		if ($result) {
 
