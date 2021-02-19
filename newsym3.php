@@ -8,19 +8,18 @@ $link = mysqli_connect('student.crru.ac.th','601463046','issaraporn@5075','60146
 
 if (isset($_GET)) {
 	if ($_GET['isAdd'] == 'true') {
-
-		$result = mysqli_query($link, "SELECT *
-FROM `get_dissym`
-JOIN `group_symptom`
-USING ( `group_id` )
-JOIN symptom
+		$des_id = $_GET['des_id'];
+		
+				$result = mysqli_query($link, "SELECT get_dissym.`symptom_id` , symptom_name, `disease_id` , get_dissym.`des_id` , description.des_name, get_dissym.`group_id` , group_name
+FROM symptom
+RIGHT JOIN get_dissym
 USING ( `symptom_id` )
-JOIN description
-USING ( `des_id` )
-JOIN `disease`
-USING ( `disease_id` ) 
-JOIN expertise
-USING ( expertise_id )");
+JOIN `group_symptom` ON get_dissym.`group_id` = group_symptom.`group_id`
+JOIN description ON get_dissym.des_id = description.des_id
+WHERE get_dissym.`yn` NOT
+IN ('y')
+LIMIT 0 , 1");
+
 
 		if ($result) {
 

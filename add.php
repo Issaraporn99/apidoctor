@@ -7,12 +7,13 @@ $link = mysqli_connect('student.crru.ac.th','601463046','issaraporn@5075','60146
 //$link = mysqli_connect('localhost','root','','doctor');
 
 if (isset($_POST)) {
-		foreach($_POST['statuss'] as $row=>$art){
+		foreach($_POST['dess'] as $row=>$art){
            $getdata1=$_POST['symm'][$row];
            $getdata2=$_POST['diss'][$row];
-           $getdata3=$_POST['statuss'][$row];
+           $getdata3=$_POST['dess'][$row];
+           $getdata4=$_POST['groupp'][$row];
         
-           $sql = "INSERT INTO `get_dissym`( `symptom_id`, `disease_id`, `status`,`yn`) VALUES ('$getdata1','$getdata2','$getdata3','a')";
+            $sql = "INSERT INTO `get_dissym`( `symptom_id`, `disease_id`, `des_id`,`group_id`,`yn`) VALUES ('$getdata1','$getdata2','$getdata3','$getdata4','a')";
            
            	$result = mysqli_query($link, $sql);
            

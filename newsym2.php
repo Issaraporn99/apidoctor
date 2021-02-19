@@ -9,18 +9,10 @@ $link = mysqli_connect('student.crru.ac.th','601463046','issaraporn@5075','60146
 if (isset($_GET)) {
 	if ($_GET['isAdd'] == 'true') {
 
-		$result = mysqli_query($link, "SELECT *
-FROM `get_dissym`
-JOIN `group_symptom`
-USING ( `group_id` )
-JOIN symptom
-USING ( `symptom_id` )
-JOIN description
-USING ( `des_id` )
-JOIN `disease`
-USING ( `disease_id` ) 
-JOIN expertise
-USING ( expertise_id )");
+		$des_id = $_GET['des_id'];
+
+
+		$result = mysqli_query($link, "SELECT * FROM `get_dissym` where `des_id` = $des_id");
 
 		if ($result) {
 

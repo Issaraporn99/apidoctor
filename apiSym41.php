@@ -9,18 +9,20 @@ $link = mysqli_connect('student.crru.ac.th','601463046','issaraporn@5075','60146
 if (isset($_GET)) {
 	if ($_GET['isAdd'] == 'true') {
 
-		$result = mysqli_query($link, "SELECT *
-FROM `get_dissym`
-JOIN `group_symptom`
-USING ( `group_id` )
-JOIN symptom
+		$text = $_GET['text'];
+
+
+		// $result = mysqli_query($link, "SELECT symptom_id,disease_id,status FROM `symptom`LEFT JOIN disease_symptoms 
+		// 							   USING ( `symptom_id` )
+		// 							   WHERE group_id =$group_id");
+		
+		$result = mysqli_query($link, "SELECT `symptom_id` , `disease_id` , `des_id` , disease_symptoms.`group_id`
+FROM `disease_symptoms`
+LEFT JOIN symptom
 USING ( `symptom_id` )
-JOIN description
-USING ( `des_id` )
-JOIN `disease`
-USING ( `disease_id` ) 
-JOIN expertise
-USING ( expertise_id )");
+WHERE `disease_id`
+IN ( $text )
+ORDER BY disease_symptoms.`group_id` ASC");
 
 		if ($result) {
 
@@ -35,7 +37,7 @@ USING ( expertise_id )");
 
 	} else echo "Welcome Master UNG";	// if2
    
-}	// if1
+}
 
 
 	mysqli_close($link);
