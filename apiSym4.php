@@ -12,15 +12,15 @@ if (isset($_GET)) {
 		$group_id = $_GET['group_id'];
 
 
-		// $result = mysqli_query($link, "SELECT symptom_id,disease_id,status FROM `symptom`LEFT JOIN disease_symptoms 
-		// 							   USING ( `symptom_id` )
-		// 							   WHERE group_id =$group_id");
+		$result = mysqli_query($link, "SELECT symptom_id,disease_id,status FROM `symptom`LEFT JOIN disease_symptoms 
+									   USING ( `symptom_id` )
+									   WHERE group_id =$group_id and symptom_id IS NOT NULL");
 		
-		$result = mysqli_query($link, "SELECT`symptom_id`,`disease_id`,`des_id`,disease_symptoms.`group_id` 
-										FROM `disease_symptoms`
-										left join symptom using(`symptom_id`)
-										where disease_symptoms.`group_id` =$group_id
-										group by `disease_id`");
+		// $result = mysqli_query($link, "SELECT`symptom_id`,`disease_id`,`des_id`,disease_symptoms.`group_id` 
+		// 								FROM `disease_symptoms`
+		// 								left join symptom using(`symptom_id`)
+		// 								where disease_symptoms.`group_id` =$group_id
+		// 								group by `disease_id`");
 
 		if ($result) {
 

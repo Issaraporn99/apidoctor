@@ -9,21 +9,9 @@ $link = mysqli_connect('student.crru.ac.th','601463046','issaraporn@5075','60146
 if (isset($_GET)) {
 	if ($_GET['isAdd'] == 'true') {
 
-		$text = $_GET['text'];
+			$result = mysqli_query($link, "SELECT `yn` FROM `get_dissym` WHERE `yn` = 'y'");
 
-
-		// $result = mysqli_query($link, "SELECT symptom_id,disease_id,status FROM `symptom`LEFT JOIN disease_symptoms 
-		// 							   USING ( `symptom_id` )
-		// 							   WHERE group_id =$group_id");
-		
-		$result = mysqli_query($link, "SELECT `symptom_id` , `disease_id`
-FROM `disease_symptoms`
-LEFT JOIN symptom
-USING ( `symptom_id` )
-WHERE `disease_id`
-IN ( $text ) and symptom_id IS NOT NULL");
-
-		if ($result) {
+if ($result) {
 
 			while($row=mysqli_fetch_assoc($result)){
 			$output[]=$row;
@@ -36,8 +24,9 @@ IN ( $text ) and symptom_id IS NOT NULL");
 
 	} else echo "Welcome Master UNG";	// if2
    
-}
+}	// if1
 
 
 	mysqli_close($link);
 ?>
+	

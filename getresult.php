@@ -11,12 +11,8 @@ if (isset($_GET)) {
 
 		$result = mysqli_query($link, "SELECT *
 FROM `get_dissym`
-JOIN `group_symptom`
-USING ( `group_id` )
 JOIN symptom
-USING ( `symptom_id` )
-JOIN description
-USING ( `des_id` )
+USING ( `symptom_id`)
 JOIN `disease`
 USING ( `disease_id` ) 
 JOIN expertise
