@@ -9,19 +9,9 @@ $link = mysqli_connect('student.crru.ac.th','601463046','issaraporn@5075','60146
 if (isset($_GET)) {
 	if ($_GET['isAdd'] == 'true') {
 
-		$symptom_id = $_GET['symptom_id'];
-		$text = $_GET['text'];
+			$result = mysqli_query($link, "SELECT * FROM `get_dissym` WHERE `yn` = 'y'");
 
-
-		$result = mysqli_query($link, "SELECT `symptom_id` , `symptom_name` , `disease_id` , COUNT( `symptom_id` ),`yn`,`img`
-										FROM get_dissym
-										JOIN `symptom` USING ( `symptom_id` )
-										WHERE `disease_id` NOT IN ( $text ) AND NOT (`yn` IN ( 'y' ))
-										GROUP BY `symptom_id` , `symptom_name`
-										ORDER BY COUNT( * ) DESC , `symptom_id`
-										LIMIT 0 , 1");
-
-		if ($result) {
+if ($result) {
 
 			while($row=mysqli_fetch_assoc($result)){
 			$output[]=$row;
@@ -39,3 +29,4 @@ if (isset($_GET)) {
 
 	mysqli_close($link);
 ?>
+	

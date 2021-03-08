@@ -13,7 +13,7 @@ if (isset($_GET)) {
 		$text = $_GET['text'];
 
 
-		$result = mysqli_query($link, "SELECT `symptom_id` , `symptom_name` , `disease_id` , COUNT( `symptom_id` ),`yn`
+		$result = mysqli_query($link, "SELECT `symptom_id` , `symptom_name` , `disease_id` ,`img`, COUNT( `symptom_id` ),`yn`
 										FROM get_dissym
 										JOIN `symptom` USING ( `symptom_id` )
 										WHERE `disease_id` IN ( $text ) AND NOT (`yn` IN ( 'y' ))

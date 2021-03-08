@@ -9,7 +9,7 @@ $link = mysqli_connect('student.crru.ac.th','601463046','issaraporn@5075','60146
 if (isset($_GET)) {
 	if ($_GET['isAdd'] == 'true') {
 
-			$result = mysqli_query($link, "SELECT `yn` FROM `get_dissym` WHERE `yn` = 'y'");
+			$result = mysqli_query($link, "SELECT * FROM `get_dissym` GROUP BY `disease_id`");
 
 if ($result) {
 

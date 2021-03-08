@@ -10,8 +10,9 @@ if (isset($_POST)) {
 		foreach($_POST['symm'] as $row=>$art){
            $getdata1=$_POST['symm'][$row];
            $getdata2=$_POST['diss'][$row];
+           $getdata3=$_POST['gg'][$row];
         
-            $sql = "INSERT INTO `get_dissym`( `symptom_id`, `disease_id`, `yn`) VALUES ('$getdata1','$getdata2','a')";
+            $sql = "INSERT INTO `get_dissym`( `symptom_id`, `disease_id`,`group_id`, `yn`) VALUES ('$getdata1','$getdata2','$getdata3','a')";
            
            	$result = mysqli_query($link, $sql);
            

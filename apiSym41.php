@@ -16,10 +16,12 @@ if (isset($_GET)) {
 		// 							   USING ( `symptom_id` )
 		// 							   WHERE group_id =$group_id");
 		
-		$result = mysqli_query($link, "SELECT `symptom_id` , `disease_id`
+		$result = mysqli_query($link, "SELECT `symptom_id` , `disease_id`,group_id
 FROM `disease_symptoms`
 LEFT JOIN symptom
 USING ( `symptom_id` )
+LEFT JOIN group_symptom 
+USING ( `group_id` )
 WHERE `disease_id`
 IN ( $text ) and symptom_id IS NOT NULL");
 
