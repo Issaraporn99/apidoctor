@@ -9,7 +9,11 @@ $link = mysqli_connect('student.crru.ac.th','601463046','issaraporn@5075','60146
 if (isset($_GET)) {
 	if ($_GET['isAdd'] == 'true') {
 
-		$result = mysqli_query($link, "SELECT * FROM `get_dissym` where `yn` = 'y'");
+		$result = mysqli_query($link, "SELECT `disease_id` , `no` , `yn` , `group_id` , `symptom_id`
+FROM `get_dissym`
+LEFT JOIN `disease`
+USING ( `disease_id` )
+WHERE `yn` = 'y'");
 
 		if ($result) {
 

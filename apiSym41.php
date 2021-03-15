@@ -23,7 +23,7 @@ USING ( `symptom_id` )
 LEFT JOIN group_symptom 
 USING ( `group_id` )
 WHERE `disease_id`
-IN ( $text ) and symptom_id IS NOT NULL");
+IN ( $text ) and symptom_id IS NOT NULL AND `group_id` IS NOT NULL");
 
 		if ($result) {
 

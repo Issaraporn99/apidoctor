@@ -17,7 +17,7 @@ LEFT JOIN user
 USING ( id )
 JOIN `expertise` ON expertise.`expertise_id` = question.`expertise_id`
 GROUP BY question.`question_id`
-ORDER BY question.`question_date` DESC");
+ORDER BY question.`question_date` DESC LIMIT 0 , 10");
 
 		if ($result) {
 
