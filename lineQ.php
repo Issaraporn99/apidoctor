@@ -3,22 +3,18 @@ header("content-type:text/javascript;charset=utf-8");
 error_reporting(0);
 error_reporting(E_ERROR | E_PARSE);
 $link = mysqli_connect('student.crru.ac.th','601463046','issaraporn@5075','601463046');
-//$link = mysqli_connect('localhost','root','','doctor');
-
 
 if (isset($_GET)) {
 	if ($_GET['isAdd'] == 'true') {
 
-		$result = mysqli_query($link, "SELECT *
-FROM `get_dissym`
-JOIN symptom
-USING ( `symptom_id`)
-JOIN `disease`
-USING ( `disease_id` ) 
-JOIN expertise
-USING ( expertise_id ) WHERE yn NOT IN ('u')");
+		$expertiseId = $_GET['expertise_id'];
+		
+												
+		$sql = "SELECT * FROM `expertise` WHERE `expertise_id` ='$expertiseId'";
 
-		if ($result) {
+		$result = mysqli_query($link, $sql);
+
+			if ($result) {
 
 			while($row=mysqli_fetch_assoc($result)){
 			$output[]=$row;
@@ -27,12 +23,10 @@ USING ( expertise_id ) WHERE yn NOT IN ('u')");
 
 			echo json_encode($output);
 
-		} //if
+		} 
 
-	} else echo "Welcome Master UNG";	// if2
+	} else echo "Welcome Master UNG";
    
-}	// if1
-
-
+}
 	mysqli_close($link);
 ?>

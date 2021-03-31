@@ -11,8 +11,7 @@ if (isset($_GET)) {
 
 
 
-		$result = mysqli_query($link, "SELECT symptom_name, symptom_id, disease_id,
-STATUS , yn, COUNT( * )
+		$result = mysqli_query($link, "SELECT symptom_name,symptom_id,disease_id,status,yn,img,get_dissym.`before_id`, COUNT( * )
 FROM get_dissym
 LEFT JOIN `symptom`
 USING ( `symptom_id` )

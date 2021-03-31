@@ -13,7 +13,7 @@ if (isset($_GET)) {
 		$text = $_GET['text'];
 
 
-		$result = mysqli_query($link, "SELECT `symptom_id` , `symptom_name` , `disease_id` , COUNT( `symptom_id` ) , `yn`,`img`
+		$result = mysqli_query($link, "SELECT `symptom_id` , `symptom_name` , `disease_id` ,get_dissym.`before_id`, COUNT( `symptom_id` ) , `yn`,`img`
 										FROM get_dissym
 										JOIN `symptom`
 										USING ( `symptom_id` )

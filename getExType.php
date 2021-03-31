@@ -9,7 +9,7 @@ $link = mysqli_connect('student.crru.ac.th','601463046','issaraporn@5075','60146
 if (isset($_GET)) {
 	if ($_GET['isAdd'] == 'true') {
 
-		$result = mysqli_query($link, "SELECT * FROM `expertise`");
+		$result = mysqli_query($link, "SELECT * FROM `expertise` GROUP BY CONVERT(  expertise_name USING tis620 ) ASC");
 
 		if ($result) {
 

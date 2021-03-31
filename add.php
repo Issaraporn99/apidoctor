@@ -11,8 +11,9 @@ if (isset($_POST)) {
            $getdata1=$_POST['symm'][$row];
            $getdata2=$_POST['diss'][$row];
            $getdata3=$_POST['gg'][$row];
+           $getdata4=$_POST['bf'][$row];
         
-            $sql = "INSERT INTO `get_dissym`( `symptom_id`, `disease_id`,`group_id`, `yn`) VALUES ('$getdata1','$getdata2','$getdata3','a')";
+            $sql = "INSERT INTO `get_dissym`( `symptom_id`, `disease_id`,`group_id`,`before_id`, `yn`) VALUES ('$getdata1','$getdata2','$getdata3','$getdata4','a')";
            
            	$result = mysqli_query($link, $sql);
            

@@ -16,7 +16,7 @@ if (isset($_GET)) {
 		// 							   USING ( `symptom_id` )
 		// 							   WHERE group_id =$group_id");
 		
-		$result = mysqli_query($link, "SELECT `symptom_id` , `disease_id`,group_id
+		$result = mysqli_query($link, "SELECT `symptom_id` , `disease_id`,group_id,`before_id`
 FROM `disease_symptoms`
 LEFT JOIN symptom
 USING ( `symptom_id` )

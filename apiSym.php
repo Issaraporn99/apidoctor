@@ -12,7 +12,7 @@ if (isset($_GET)) {
 		$group_id = $_GET['group_id'];
 
 
-		$result = mysqli_query($link, "SELECT symptom_name,symptom_id,disease_id,status,yn,img,count(*)
+		$result = mysqli_query($link, "SELECT symptom_name,symptom_id,disease_id,status,yn,img,get_dissym.`before_id`,count(*)
 FROM symptom 
 LEFT JOIN get_dissym using(`symptom_id`)
 WHERE get_dissym.group_id=$group_id

@@ -14,7 +14,7 @@ if (isset($_GET)) {
 		$text = $_GET['text'];
 
 
-		$result = mysqli_query($link, "SELECT `symptom_id` , `symptom_name` , `disease_id` , `img`,COUNT( `symptom_id` ) , `yn` , get_dissym.`group_id`
+		$result = mysqli_query($link, "SELECT `symptom_id` , `symptom_name` , `disease_id`,get_dissym.`before_id` , `img`,COUNT( `symptom_id` ) , `yn` , get_dissym.`group_id`
 FROM get_dissym JOIN `symptom` USING ( `symptom_id` ) WHERE `disease_id` NOT IN ( $text ) AND NOT (`yn` IN ('y','u'))
 AND get_dissym.group_id =$group_id
 GROUP BY `symptom_id` , `symptom_name`

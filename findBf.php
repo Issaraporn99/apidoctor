@@ -9,18 +9,12 @@ $link = mysqli_connect('student.crru.ac.th','601463046','issaraporn@5075','60146
 if (isset($_GET)) {
 	if ($_GET['isAdd'] == 'true') {
 
-		$symptom_id = $_GET['symptom_id'];
-		$text = $_GET['text'];
+		$before_id = $_GET['before_id'];
 
 
-		$result = mysqli_query($link, "SELECT `symptom_id` , `symptom_name` , `disease_id` ,get_dissym.`before_id`,`img`, 
-										COUNT( `symptom_id` ),`yn`
-										FROM get_dissym
-										JOIN `symptom` USING ( `symptom_id` )
-										WHERE `disease_id` IN ( $text ) AND NOT (`yn` IN ( 'y','u'))
-										GROUP BY `symptom_id` , `symptom_name`
-										ORDER BY COUNT( * ) DESC , `symptom_id`
-										LIMIT 0 , 1");
+		$result = mysqli_query($link, "SELECT *
+FROM `before`
+WHERE `before_id` ='$before_id'");
 
 		if ($result) {
 

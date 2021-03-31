@@ -11,6 +11,7 @@ if (isset($_GET)) {
 		
 		$questionName = $_GET['question_name'];
 		$expertiseId = $_GET['expertise_id'];
+		$expertiseName = $_GET['expertise_name'];
 								
 		$sql = "INSERT INTO `question`(`question_id`, `question`, `question_name`, `expertise_id`) VALUES (Null, '$question','$questionName','$expertiseId')";
 
@@ -29,7 +30,7 @@ define('LINE_API',"https://notify-api.line.me/api/notify");
  
 			$token = "IuSC0OXFDuFpyy6C1G1Bk2VAxkgiKbFVJVHIHhcQJ7q"; //ใส่Token ที่copy เอาไว้
 			
-			$str = 'มีคำถามใหม่ http://student.crru.ac.th/601463046';
+			$str = 'สาขา'.$expertiseName.' มีคำถามใหม่ http://student.crru.ac.th/601463046';
 				    //ข้อความที่ต้องการส่ง สูงสุด 1000 ตัวอักษร
 			 
 			$res = notify_message($str,$token);

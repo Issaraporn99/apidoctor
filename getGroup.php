@@ -25,7 +25,7 @@ if (isset($_GET)) {
 										USING ( group_id )
 										JOIN organ USING ( organ_id )
 										WHERE group_symptom.organ_id =$organ_id
-										GROUP BY CONVERT( group_id USING tis620 ) ASC");
+										GROUP BY CONVERT(  group_name USING tis620 ) ASC");
 
 		if ($result) {
 
